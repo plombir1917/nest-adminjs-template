@@ -24,4 +24,4 @@ RUN npm run build
 EXPOSE 3002
 
 # Запуск приложения
-CMD ["npm","run","migrate:dev"]
+CMD ["npm","run","migrate"]
