@@ -11,12 +11,12 @@ const DEFAULT_ADMIN = {
   password: 'password',
 };
 
-const authenticate = async (email: string, password: string) => {
-  if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
-    return Promise.resolve(DEFAULT_ADMIN);
-  }
-  return null;
-};
+// const authenticate = async (email: string, password: string) => {
+//   if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
+//     return Promise.resolve(DEFAULT_ADMIN);
+//   }
+//   return null;
+// };
 
 @Module({
   imports: [
@@ -24,29 +24,67 @@ const authenticate = async (email: string, password: string) => {
     // AdminJS version 7 is ESM-only. In order to import it, you have to use dynamic imports.
     import('@adminjs/nestjs').then(({ AdminModule }) =>
       AdminModule.createAdminAsync({
-        useFactory: () => ({
-          adminJsOptions: {
-            rootPath: '/admin',
-            resources: [
-              {
-                resource: {
-                  model: getModelByName('User'),
-                  client: new PrismaService(),
+        useFactory: () => {
+          const prisma = new PrismaService();
+          return {
+            adminJsOptions: {
+              branding: {
+                companyName: 'ОБУ ИТЦ',
+                withMadeWithLove: true,
+              },
+              pages: {
+                page: {
+                  handler: async (request, response, context) => {
+                    return {
+                      text: 'I am fetched from the backend',
+                    };
+                  },
+                  component: 'CustomPage',
                 },
               },
-            ],
-          },
-          auth: {
-            authenticate,
-            cookieName: 'adminjs',
-            cookiePassword: 'secret',
-          },
-          sessionOptions: {
-            resave: true,
-            saveUninitialized: true,
-            secret: 'secret',
-          },
-        }),
+
+              rootPath: '/admin',
+              resources: [
+                {
+                  resource: {
+                    model: getModelByName('User'),
+                    client: prisma,
+                  },
+                },
+              ],
+              locale: {
+                localeDetection: true,
+                language: 'en',
+                translations: {
+                  // actions,
+                  // buttons,
+                  // labels,
+                  // components,
+                  // messages,
+                  // properties
+                  en: {
+                    labels: {
+                      User: 'Пользователи',
+                    },
+                    pages: {
+                      page: 'Страница',
+                    },
+                  },
+                },
+              },
+            },
+            // auth: {
+            //   authenticate,
+            //   cookieName: 'adminjs',
+            //   cookiePassword: 'secret',
+            // },
+            sessionOptions: {
+              resave: true,
+              saveUninitialized: true,
+              secret: 'secret',
+            },
+          };
+        },
       }),
     ),
   ],
