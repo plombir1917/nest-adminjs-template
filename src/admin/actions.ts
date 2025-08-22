@@ -17,10 +17,9 @@ export function newAction(resource: string) {
       });
 
       if (!res.ok) {
-        const errorData = await res.json();
         return {
           notice: {
-            message: errorData.message || 'Ошибка при создании',
+            message: 'Ошибка при создании',
             type: 'error',
           },
         };
@@ -86,10 +85,9 @@ export function showAction(resource: string) {
       );
 
       if (!res.ok) {
-        const errorData = await res.json();
         return {
           notice: {
-            message: errorData.message || 'Ошибка при получении',
+            message: 'Ошибка при получении',
             type: 'error',
           },
         };
@@ -125,10 +123,9 @@ export function editAction(resource: string) {
       );
 
       if (!res.ok) {
-        const errorData = await res.json();
         return {
           notice: {
-            message: errorData.message || 'Ошибка при обновлении',
+            message: 'Ошибка при обновлении',
             type: 'error',
           },
         };
@@ -170,10 +167,9 @@ export function deleteAction(resource: string) {
       );
 
       if (!res.ok) {
-        const errorData = await res.json();
         return {
           notice: {
-            message: errorData.message || 'Ошибка при удалении',
+            message: 'Ошибка при удалении',
             type: 'error',
           },
         };
