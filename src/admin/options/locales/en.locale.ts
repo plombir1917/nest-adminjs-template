@@ -1,6 +1,8 @@
 export const en = {
   // actions,
-  // buttons,
+  messages: {
+    welcomeOnBoard_title: 'Добро пожаловать',
+  },
   // labels,
   // components,
   // messages,
