@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service.js';
+import { PrismaService } from '../../prisma/prisma.service.js';
 import { UserEntity } from './entities/user.entity.js';
+import { CreateUserDto } from './dto/create-user.dto.js';
+import { UpdateUserDto } from './dto/update-user.dto.js';
 
 @Injectable()
 export class UserRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async create(user: UserEntity) {
+  async create(user: CreateUserDto) {
     try {
       return await this.prismaService.user.create({
         data: user,
@@ -36,7 +38,7 @@ export class UserRepository {
     }
   }
 
-  async update(id: number, user: Partial<UserEntity>) {
+  async update(id: number, user: UpdateUserDto) {
     try {
       return await this.prismaService.user.update({
         where: { id },
