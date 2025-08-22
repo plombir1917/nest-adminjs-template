@@ -28,7 +28,6 @@ const authenticate = async (email: string, password: string) => {
           return {
             adminJsOptions: {
               branding: adminService.getBranding(),
-              pages: adminService.getPages(),
               rootPath: '/admin',
               resources: adminService.getResources(),
               locale: adminService.getLocale(),
