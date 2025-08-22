@@ -163,7 +163,7 @@ export function deleteAction(resource: string) {
     handler: async (request, response, context) => {
       const { recordId } = request.params as any;
       const res = await fetch(
-        `${process.env.ADMIN_API_BASE_URL}/${response}/${recordId}`,
+        `${process.env.ADMIN_API_BASE_URL}/${resource}/${recordId}`,
         {
           method: 'DELETE',
         },
