@@ -37,7 +37,8 @@ export const en = {
     close: 'Закрыть',
   },
   messages: {
-    welcomeOnBoard_title: 'Добро пожаловать',
+    welcomeOnBoard_title: 'Система администрирования',
+    welcomeOnBoard_subtitle: 'Выберите сущность для изменения в боковом меню.',
     loginWelcome_message: 'Войдите в систему для продолжения',
     successfullyBulkDeleted: '{{count}} запись(и) успешно удалены',
     successfullyDeleted: 'Запись успешно удалена',
@@ -66,7 +67,6 @@ export const en = {
     selectedRecords: 'Выбранные записи',
   },
   pages: {
-    page: 'Страница',
     dashboard: 'Панель управления',
     notFound: 'Страница не найдена',
   },
@@ -89,9 +89,11 @@ export const en = {
     Login: {
       welcomeHeader: 'Добро пожаловать',
       welcomeMessage: 'Пожалуйста, войдите в свою учётную запись',
-      email: 'Электронная почта',
-      password: 'Пароль',
       loginButton: 'Войти',
+      properties: {
+        email: 'Электронная почта',
+        password: 'Пароль',
+      },
     },
     Sidebar: {
       logout: 'Выйти',
