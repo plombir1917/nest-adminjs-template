@@ -3,7 +3,6 @@ import { PrismaService } from '../prisma/prisma.service.js';
 import { getModelByName } from '@adminjs/prisma';
 import { UserResourceOptions } from './options/resources/user.resource.js';
 import { AdminJSBranding } from './options/branding.js';
-import { AdminJSPages } from './options/pages.js';
 import { AdminJSLocale } from './options/locale.js';
 
 @Injectable()
@@ -12,10 +11,6 @@ export class AdminJSService {
 
   getBranding() {
     return AdminJSBranding;
-  }
-
-  getPages() {
-    return AdminJSPages;
   }
 
   getLocale() {
