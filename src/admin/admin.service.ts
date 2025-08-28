@@ -21,6 +21,7 @@ export class AdminJSService {
     const usersCount = await this.prismaService.user.count();
     // Расширяйте метрики по мере появления сущностей
     return {
+      adminJSVersion: process.env.ADMINJS_VERSION,
       usersCount,
       serverTime: new Date().toISOString(),
     };

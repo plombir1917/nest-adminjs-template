@@ -7,7 +7,11 @@ const api = new ApiClient();
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [data, setData] = useState({ usersCount: 0, serverTime: '' });
+  const [data, setData] = useState({
+    usersCount: 0,
+    serverTime: '',
+    adminJSVersion: '',
+  });
 
   useEffect(() => {
     let mounted = true;
@@ -16,9 +20,11 @@ export default function Dashboard() {
         const res = await api.getDashboard();
         if (mounted) {
           const payload = res?.data || {};
+          console.log(payload);
           setData({
             usersCount: Number(payload.usersCount) || 0,
             serverTime: payload.serverTime || '',
+            adminJSVersion: payload.adminJSVersion || '',
           });
           setLoading(false);
         }
@@ -74,7 +80,7 @@ export default function Dashboard() {
             style={{ gap: 24 }}
           >
             <Panel title="Сведения о системе">
-              <InfoRow label="Версия Admin панели" value={getAppVersion()} />
+              <InfoRow label="Версия AdminJS" value={data.adminJSVersion} />
               <InfoRow label="Текущее время сервера" value={serverTimeHuman} />
             </Panel>
             <Panel title="Последние события">
@@ -189,9 +195,4 @@ function formatNumber(n) {
   } catch {
     return String(n);
   }
-}
-
-function getAppVersion() {
-  // при необходимости — подхват версии из env/конфига
-  return 'v0.0.1';
 }
