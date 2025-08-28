@@ -3,14 +3,9 @@ import { PrismaModule } from '../prisma/prisma.module.js';
 import { Database, Resource } from '@adminjs/prisma';
 import AdminJS from 'adminjs';
 import { AdminJSService } from './admin.service.js';
-import { ComponentLoader } from 'adminjs';
-
-const componentLoader = new ComponentLoader();
-
-const Components = {
-  Dashboard: componentLoader.add('Dashboard', './components/dashboard'),
-  // other custom components
-};
+import { DashboardService } from './services/dashboard.service.js';
+import { UserModule } from '../api/user/user.module.js';
+import { componentLoader } from './components/components.config.js';
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -29,17 +24,16 @@ const authenticate = async (email: string, password: string) => {
 @Module({
   imports: [
     PrismaModule,
+    UserModule,
     // AdminJS version 7 is ESM-only. In order to import it, you have to use dynamic imports.
     import('@adminjs/nestjs').then(({ AdminModule }) =>
       AdminModule.createAdminAsync({
         useFactory: (adminService: AdminJSService) => {
           return {
             adminJsOptions: {
-              dashboard: {
-                component: Components.Dashboard,
-                handler: async () => adminService.getDashboardMetrics(),
-              },
               componentLoader,
+
+              dashboard: adminService.getDashboard(),
               branding: adminService.getBranding(),
               rootPath: '/admin',
               resources: adminService.getResources(),
@@ -62,7 +56,7 @@ const authenticate = async (email: string, password: string) => {
       }),
     ),
   ],
-  providers: [AdminJSService],
+  providers: [AdminJSService, DashboardService],
   exports: [AdminJSService],
 })
 export class AdminJSModule {}
