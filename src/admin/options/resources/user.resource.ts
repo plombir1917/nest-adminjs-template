@@ -11,6 +11,7 @@ const resource = 'user';
 
 export const UserResourceOptions = {
   listProperties: Object.keys(UserEntity),
+  navigation: { icon: 'User' },
   actions: {
     new: newAction(resource),
 
