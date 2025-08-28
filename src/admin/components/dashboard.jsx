@@ -20,7 +20,6 @@ export default function Dashboard() {
         const res = await api.getDashboard();
         if (mounted) {
           const payload = res?.data || {};
-          console.log(payload);
           setData({
             usersCount: Number(payload.usersCount) || 0,
             serverTime: payload.serverTime || '',
