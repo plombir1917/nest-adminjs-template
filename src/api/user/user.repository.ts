@@ -1,61 +1,46 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
-import { UserEntity } from './entities/user.entity.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
+import { UserEntity } from './entities/user.entity.js';
+import { IRepository } from '../interface/repository.interface.js';
 
 @Injectable()
-export class UserRepository {
+export class UserRepository implements IRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(user: CreateUserDto) {
-    try {
-      return await this.prismaService.user.create({
-        data: user,
-      });
-    } catch (error) {
-      throw new Error('Create user error!');
-    }
+    return await this.prismaService.user.create({
+      data: user,
+    });
   }
 
-  async findOne(id: number) {
-    try {
-      return await this.prismaService.user.findUniqueOrThrow({
-        where: {
-          id,
-        },
-      });
-    } catch (error) {
-      throw new Error(error.message);
-    }
+  async findOne(id: number): Promise<UserEntity> {
+    return await this.prismaService.user.findUniqueOrThrow({
+      where: {
+        id,
+      },
+    });
   }
 
-  async findAll() {
-    try {
-      return await this.prismaService.user.findMany();
-    } catch (error) {
-      throw new Error('Find all user error!');
-    }
+  async findAll(): Promise<UserEntity[]> {
+    return await this.prismaService.user.findMany();
   }
 
   async update(id: number, user: UpdateUserDto) {
-    try {
-      return await this.prismaService.user.update({
-        where: { id },
-        data: user,
-      });
-    } catch (error) {
-      throw new Error('Update user error!');
-    }
+    return await this.prismaService.user.update({
+      where: { id },
+      data: user,
+    });
   }
 
-  async delete(id: number) {
-    try {
-      return await this.prismaService.user.delete({
-        where: { id },
-      });
-    } catch (error) {
-      throw new Error('Delete user error!');
-    }
+  async delete(id: number): Promise<UserEntity> {
+    return await this.prismaService.user.delete({
+      where: { id },
+    });
+  }
+
+  async count(): Promise<number> {
+    return await this.prismaService.user.count();
   }
 }
