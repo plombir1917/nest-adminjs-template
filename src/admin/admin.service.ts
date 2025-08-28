@@ -4,10 +4,14 @@ import { getModelByName } from '@adminjs/prisma';
 import { UserResourceOptions } from './options/resources/user.resource.js';
 import { AdminJSBranding } from './options/branding.js';
 import { AdminJSLocale } from './options/locale.js';
+import { DashboardService } from './services/dashboard.service.js';
 
 @Injectable()
 export class AdminJSService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly dashboardService: DashboardService,
+  ) {}
 
   getBranding() {
     return AdminJSBranding;
@@ -17,14 +21,8 @@ export class AdminJSService {
     return AdminJSLocale;
   }
 
-  async getDashboardMetrics() {
-    const usersCount = await this.prismaService.user.count();
-    // Расширяйте метрики по мере появления сущностей
-    return {
-      adminJSVersion: process.env.ADMINJS_VERSION,
-      usersCount,
-      serverTime: new Date().toISOString(),
-    };
+  getDashboard() {
+    return this.dashboardService.getDashboard();
   }
 
   getResources() {
