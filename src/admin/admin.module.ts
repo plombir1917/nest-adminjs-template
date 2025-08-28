@@ -3,6 +3,14 @@ import { PrismaModule } from '../prisma/prisma.module.js';
 import { Database, Resource } from '@adminjs/prisma';
 import AdminJS from 'adminjs';
 import { AdminJSService } from './admin.service.js';
+import { ComponentLoader } from 'adminjs';
+
+const componentLoader = new ComponentLoader();
+
+const Components = {
+  Dashboard: componentLoader.add('Dashboard', './components/dashboard'),
+  // other custom components
+};
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -27,6 +35,11 @@ const authenticate = async (email: string, password: string) => {
         useFactory: (adminService: AdminJSService) => {
           return {
             adminJsOptions: {
+              dashboard: {
+                component: Components.Dashboard,
+                handler: async () => adminService.getDashboardMetrics(),
+              },
+              componentLoader,
               branding: adminService.getBranding(),
               rootPath: '/admin',
               resources: adminService.getResources(),

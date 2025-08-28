@@ -17,6 +17,15 @@ export class AdminJSService {
     return AdminJSLocale;
   }
 
+  async getDashboardMetrics() {
+    const usersCount = await this.prismaService.user.count();
+    // Расширяйте метрики по мере появления сущностей
+    return {
+      usersCount,
+      serverTime: new Date().toISOString(),
+    };
+  }
+
   getResources() {
     const resources = [];
     resources.push(this.getUserResource());
