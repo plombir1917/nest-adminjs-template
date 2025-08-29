@@ -6,4 +6,8 @@ export class UserEntity {
   name: string;
 
   password: string;
+
+  createdAt: Date;
+
+  updatedAt: Date;
 }
