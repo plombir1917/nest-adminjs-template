@@ -23,6 +23,10 @@ export class UserRepository implements IRepository {
     });
   }
 
+  async findOneBy(param: Partial<UserEntity>) {
+    return await this.prismaService.user.findFirst({ where: param });
+  }
+
   async findAll(): Promise<UserEntity[]> {
     return await this.prismaService.user.findMany();
   }

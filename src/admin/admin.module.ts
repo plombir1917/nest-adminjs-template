@@ -6,7 +6,7 @@ import { AdminJSService } from './admin.service.js';
 import { DashboardService } from './services/dashboard.service.js';
 import { UserModule } from '../api/user/user.module.js';
 import { componentLoader } from './components/components.config.js';
-import { authenticate } from './auth/auth.js';
+import { AuthModule } from '../api/auth/auth.module.js';
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -14,6 +14,7 @@ AdminJS.registerAdapter({ Database, Resource });
   imports: [
     PrismaModule,
     UserModule,
+    AuthModule,
     import('@adminjs/nestjs').then(({ AdminModule }) =>
       AdminModule.createAdminAsync({
         useFactory: (adminService: AdminJSService) => {
@@ -28,7 +29,8 @@ AdminJS.registerAdapter({ Database, Resource });
               locale: adminService.getLocale(),
             },
             auth: {
-              authenticate,
+              authenticate: async (email, password) =>
+                await adminService.authenticate(email, password),
               cookieName: 'auth',
               cookiePassword: process.env.SECRET,
             },

@@ -8,4 +8,6 @@ export interface IRepository {
   delete(id: number): Promise<any>;
 
   count(): Promise<number>;
+
+  findOneBy(param: any): Promise<any>;
 }
