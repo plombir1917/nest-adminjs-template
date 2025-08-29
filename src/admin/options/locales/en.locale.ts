@@ -63,6 +63,12 @@ export const en = {
     loading: 'Загрузка...',
     searchResults: 'Результаты поиска',
     invalidCredentials: 'Неверный email и/или пароль',
+    bulkDeleteError: 'Ошибка при удалении записей',
+    errorFetchingRecords: 'Ошибка при загрузке записей',
+    errorUpdatingRecord: 'Ошибка при обновлении записи. Подробности в консоли.',
+    sessionExpired: 'Ваша сессия истекла. Пожалуйста, войдите снова.',
+    thereWasAnErrorCreatingRecord:
+      'Не удалось создать запись. Подробности в консоли.',
   },
   labels: {
     User: 'Пользователи',
