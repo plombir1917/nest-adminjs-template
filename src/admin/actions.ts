@@ -18,6 +18,7 @@ export function newAction(resource: string) {
 
       if (!res.ok) {
         return {
+          record: context.resource.build(payload),
           notice: {
             message: 'Ошибка при создании',
             type: 'error',
