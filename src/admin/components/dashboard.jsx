@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ApiClient } from 'adminjs';
-import { Box, H2, Text, Label } from '@adminjs/design-system';
+import { Box, H2, Text, Label, Loader } from '@adminjs/design-system';
 
 const api = new ApiClient();
 
@@ -53,7 +53,7 @@ export default function Dashboard() {
       <Header />
 
       {loading ? (
-        <Placeholder text="Загрузка данных…" />
+        <LoaderBlock />
       ) : error ? (
         <ErrorPlaceholder text={error} />
       ) : (
@@ -96,8 +96,10 @@ export default function Dashboard() {
 
 function Header() {
   return (
-    <Box mb="lg">
-      <H2 marginBottom="xs">Панель управления</H2>
+    <Box mb="xl">
+      <H2 marginBottom="xs" style={{ fontWeight: 600 }}>
+        Панель управления
+      </H2>
       <Text variant="sm" color="grey60">
         Краткое резюме ключевых показателей и состояния системы
       </Text>
@@ -109,7 +111,7 @@ function CardsRow({ children }) {
   return (
     <Box
       display="grid"
-      gridTemplateColumns="repeat(auto-fit, minmax(240px, 1fr))"
+      gridTemplateColumns="repeat(auto-fit, minmax(260px, 1fr))"
       gridGap="xl"
       style={{ gap: 24 }}
     >
@@ -124,15 +126,33 @@ function KpiCard({ title, value, hint }) {
       variant="container"
       border
       rounded
-      p="lg"
-      style={{ background: '#fff' }}
+      p="xl"
+      style={{
+        background: '#fff',
+        boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+        transition: 'all 0.2s',
+      }}
     >
       <Label>{title}</Label>
-      <Text as="div" mt="sm" style={{ fontSize: 28, fontWeight: 700 }}>
+      <Text
+        as="div"
+        mt="md"
+        style={{ fontSize: 32, fontWeight: 700, lineHeight: 1.2 }}
+      >
         {value}
       </Text>
       {hint ? (
-        <Text variant="sm" color="grey60">
+        <Text
+          variant="sm"
+          mt="xs"
+          color="grey60"
+          style={{
+            background: '#f8f9fa',
+            borderRadius: 6,
+            padding: '2px 6px',
+            display: 'inline-block',
+          }}
+        >
           {hint}
         </Text>
       ) : null}
@@ -146,10 +166,13 @@ function Panel({ title, children }) {
       variant="container"
       border
       rounded
-      p="lg"
-      style={{ background: '#fff' }}
+      p="xl"
+      style={{
+        background: '#fff',
+        boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+      }}
     >
-      <H2 marginBottom="md" style={{ fontSize: 18 }}>
+      <H2 marginBottom="md" style={{ fontSize: 18, fontWeight: 600 }}>
         {title}
       </H2>
       {children}
@@ -172,18 +195,30 @@ function InfoRow({ label, value }) {
   );
 }
 
-function Placeholder({ text }) {
+function LoaderBlock() {
   return (
-    <Box p="lg">
-      <Text>{text}</Text>
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '240px' }}
+    >
+      <Loader />
     </Box>
   );
 }
 
 function ErrorPlaceholder({ text }) {
   return (
-    <Box p="lg">
-      <Text style={{ color: 'crimson' }}>{text}</Text>
+    <Box
+      p="xl"
+      style={{
+        border: '1px solid #f5c2c7',
+        background: '#f8d7da',
+        borderRadius: 8,
+      }}
+    >
+      <Text style={{ color: '#842029', fontWeight: 600 }}>{text}</Text>
     </Box>
   );
 }
