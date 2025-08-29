@@ -14,10 +14,11 @@ export class DashboardService {
   }
 
   async getDashboardMetrics() {
-    const usersCount = await this.userService.count();
+    const users = await this.userService.findAll();
     return {
       adminJSVersion: process.env.ADMINJS_VERSION,
-      usersCount,
+      usersCount: users.length,
+      users: users,
       serverTime: new Date().toISOString(),
     };
   }
