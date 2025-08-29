@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  BadRequestException,
+  NotFoundException,
 } from '@nestjs/common';
 import { UserService } from './user.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
@@ -17,26 +19,46 @@ export class UserController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+    try {
+      return this.userService.create(createUserDto);
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
   }
 
   @Get()
   findAll() {
-    return this.userService.findAll();
+    try {
+      return this.userService.findAll();
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+    try {
+      return this.userService.findOne(+id);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+    try {
+      return this.userService.update(+id, updateUserDto);
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.userService.delete(+id);
+    try {
+      return this.userService.delete(+id);
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
   }
 }
