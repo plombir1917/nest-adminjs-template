@@ -29,10 +29,10 @@ deploy:
     - if: $CI_COMMIT_BRANCH == "main"
       variables:
         TEAM: team-4
-        VM_HOST_LOGIN: 
+        VM_HOST_LOGIN: ""
         VM_HOST_IP: "10.248.55.53"
     - if: $CI_COMMIT_BRANCH == "develop"
       variables:
         TEAM: team-4
-        VM_HOST_LOGIN: 
+        VM_HOST_LOGIN: ""
         VM_HOST_IP: "10.248.4.68"
