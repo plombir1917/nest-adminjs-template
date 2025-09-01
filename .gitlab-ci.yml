@@ -2,7 +2,7 @@ variables:
   IMAGE_NAME: nest-adminjs-template
   IMAGE_FULL_NAME: ${NEXUS}/${IMAGE_NAME}:$CI_COMMIT_SHA
   WEB_NETWORK: ndb_net
-  DOCKER_PORT_PROD: 3000
+  DOCKER_PORT_PROD: 3017
 
 include:
   - project: 'devops-tools/gitlab-ci-templates/js'
