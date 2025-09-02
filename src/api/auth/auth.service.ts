@@ -10,7 +10,7 @@ export class AuthService {
     try {
       const user = await this.userService.findOneByEmail(email);
       if (user && (await comparePassword(password, user.password))) {
-        return { email: user.email, password: user.password };
+        return { email, password };
       }
       return null;
     } catch (error) {
