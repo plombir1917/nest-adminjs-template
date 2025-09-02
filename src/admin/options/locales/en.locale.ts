@@ -39,6 +39,14 @@ export const en = {
     navigation: 'Навигация',
     resetPassword: 'Сбросить пароль',
     addFilter: 'Добавить фильтр',
+    clear: 'Очистить',
+    collapseAll: 'Свернуть всё',
+    expandAll: 'Развернуть всё',
+    selectAll: 'Выбрать всё',
+    deselectAll: 'Снять выбор',
+    createFirstRecord: 'Создать первую запись',
+    confirmRemovalMany: 'Подтвердить удаление {{count}} записи',
+    confirmRemovalMany_plural: 'Подтвердить удаление {{count}} записей',
   },
   messages: {
     welcomeOnBoard_title: 'Система администрирования',
@@ -69,6 +77,23 @@ export const en = {
     sessionExpired: 'Ваша сессия истекла. Пожалуйста, войдите снова.',
     thereWasAnErrorCreatingRecord:
       'Не удалось создать запись. Подробности в консоли.',
+    unexpectedError: 'Произошла непредвиденная ошибка',
+    changesSaved: 'Изменения сохранены',
+    changesNotSaved: 'Не удалось сохранить изменения',
+    noRecordsWithAction: 'Записей нет. Создайте первую запись.',
+    successfullyBulkDeleted_plural: 'Успешно удалено {{count}} записей',
+    noRecordsSelected: 'Вы не выбрали записи',
+    bulkDeleteTitle: 'Следующие записи будут удалены',
+    bulkDeleteConfirmation: 'Вы уверены, что хотите удалить {{count}} запись?',
+    bulkDeleteConfirmation_plural:
+      'Вы уверены, что хотите удалить {{count}} записей?',
+    bulkDelete: {
+      one: 'Следующая запись будет удалена',
+      other: 'Следующие записи будут удалены',
+    },
+    delete: {
+      confirm: 'Вы уверены, что хотите удалить эту запись?',
+    },
   },
   labels: {
     User: 'Пользователи',
@@ -86,6 +111,9 @@ export const en = {
     logout: 'Выход',
     actions: 'Действия',
     properties: 'Свойства',
+    records: 'Записи',
+    details: 'Детали',
+    bulkDelete: 'Удалить выбранные',
   },
   pages: {
     dashboard: 'Панель управления',
@@ -93,6 +121,8 @@ export const en = {
     error: 'Ошибка',
     login: 'Авторизация',
     overview: 'Обзор',
+    settings: 'Настройки',
+    profile: 'Профиль',
   },
   properties: {
     id: 'ID',
@@ -117,6 +147,10 @@ export const en = {
     city: 'Город',
     country: 'Страна',
     zipCode: 'Индекс',
+    permissions: 'Права доступа',
+    lastLogin: 'Последний вход',
+    language: 'Язык',
+    timezone: 'Часовой пояс',
   },
   components: {
     Login: {
@@ -145,12 +179,44 @@ export const en = {
       next: 'Следующая',
       previous: 'Предыдущая',
       loading: 'Загрузка...',
+      show: 'Показать',
+      edit: 'Редактировать',
+      delete: 'Удалить',
     },
     Pagination: {
       next: 'Следующая',
       previous: 'Предыдущая',
       page: 'Страница',
       of: 'из',
+    },
+
+    DatePicker: {
+      from: 'От',
+      to: 'До',
+      date: 'Дата',
+      time: 'Время',
+      today: 'Сегодня',
+      months: [
+        'Январь',
+        'Февраль',
+        'Март',
+        'Апрель',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'Октябрь',
+        'Ноябрь',
+        'Декабрь',
+      ],
+      weekdays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    },
+    App: {
+      errorBoundary: {
+        title: 'Ошибка приложения',
+        message: 'Что-то пошло не так. Попробуйте обновить страницу.',
+      },
     },
   },
 };
