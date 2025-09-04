@@ -46,7 +46,7 @@ export class AdminJSService {
 
   async authenticate(email: string, password: string): Promise<CurrentAdmin> {
     try {
-      return await this.authService.validateUser(email, password);
+      return await this.authService.login(email, password);
     } catch (error) {
       return null;
     }
