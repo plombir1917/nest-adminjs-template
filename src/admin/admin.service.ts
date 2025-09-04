@@ -7,6 +7,8 @@ import { AdminJSLocale } from './options/locale.js';
 import { DashboardService } from './services/dashboard.service.js';
 import { AuthService } from '../api/auth/auth.service.js';
 import { CurrentAdmin } from 'adminjs';
+import { vipResourceOptions } from './options/resources/vip.resourse.js';
+import { uploadImageFeature } from './features/upload-image.feature.js';
 
 @Injectable()
 export class AdminJSService {
@@ -31,7 +33,19 @@ export class AdminJSService {
   getResources() {
     const resources = [];
     resources.push(this.getUserResource());
+    resources.push(this.getVipResource());
     return resources;
+  }
+
+  getVipResource() {
+    return {
+      resource: {
+        model: getModelByName('vip'),
+        client: this.prismaService,
+      },
+      options: vipResourceOptions,
+      features: [uploadImageFeature],
+    };
   }
 
   getUserResource() {
