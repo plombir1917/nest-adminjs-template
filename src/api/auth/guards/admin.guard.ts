@@ -10,9 +10,6 @@ export class AdminGuard implements CanActivate {
 
     if (!req.headers?.auth) return false;
     const { email, password } = JSON.parse(req.headers.auth);
-
-    return (await this.authService.validateUser(email, password))
-      ? true
-      : false;
+    return await this.authService.validateUser(email, password);
   }
 }
