@@ -16,6 +16,6 @@ async function bootstrap() {
     }),
   );
   app.use('/public', express.static(join(__dirname, '..', 'public')));
-  await app.listen(3002);
+  await app.listen(3000);
 }
 bootstrap();

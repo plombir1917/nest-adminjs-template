@@ -1,5 +1,6 @@
 export const AdminJSBranding = {
-  companyName: 'ОБУ ИТЦ',
+  companyName: 'ОРПО',
   withMadeWithLove: false,
-  logo: '/public/logo.png',
+  logo: '/public/text-logo.png',
+  favicon: '/public/favicon.ico',
 };

@@ -1,4 +1,4 @@
-// ACTIONS || Переопределённые операции с ресурсами/сущностями
+// ACTIONS || Переопределённые операции с ресурсами/сущностями для стандартного REST
 
 /**
  * Создать запись || Create
@@ -12,7 +12,10 @@ export function newAction(resource: string) {
       const payload = (request as any).payload || {};
       const res = await fetch(`${process.env.ADMIN_API_BASE_URL}/${resource}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          auth: JSON.stringify(request.session?.adminUser),
+        },
         body: JSON.stringify(payload),
       });
 
@@ -53,6 +56,9 @@ export function listAction(resource: string) {
     handler: async (request, response, context) => {
       const res = await fetch(`${process.env.ADMIN_API_BASE_URL}/${resource}`, {
         method: 'GET',
+        headers: {
+          auth: JSON.stringify(request.session?.adminUser),
+        },
       });
       const items = await res.json();
       const records = Array.isArray(items)
@@ -82,6 +88,9 @@ export function showAction(resource: string) {
         `${process.env.ADMIN_API_BASE_URL}/${resource}/${recordId}`,
         {
           method: 'GET',
+          headers: {
+            auth: JSON.stringify(request.session?.adminUser),
+          },
         },
       );
 
@@ -118,7 +127,10 @@ export function editAction(resource: string) {
         `${process.env.ADMIN_API_BASE_URL}/${resource}/${recordId}`,
         {
           method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            auth: JSON.stringify(request.session?.adminUser),
+          },
           body: JSON.stringify(payload),
         },
       );
@@ -164,6 +176,9 @@ export function deleteAction(resource: string) {
         `${process.env.ADMIN_API_BASE_URL}/${resource}/${recordId}`,
         {
           method: 'DELETE',
+          headers: {
+            auth: JSON.stringify(request.session?.adminUser),
+          },
         },
       );
 
