@@ -14,6 +14,8 @@ export const en = {
     login: 'Войти',
     dashboard: 'Панель управления',
     refresh: 'Обновить',
+    upload: 'Загрузить',
+    remove: 'Удалить файл',
   },
   buttons: {
     save: 'Сохранить',
@@ -47,6 +49,10 @@ export const en = {
     createFirstRecord: 'Создать первую запись',
     confirmRemovalMany: 'Подтвердить удаление {{count}} записи',
     confirmRemovalMany_plural: 'Подтвердить удаление {{count}} записей',
+    upload: 'Загрузить файл',
+    chooseFile: 'Выбрать файл',
+    changeFile: 'Заменить файл',
+    removeFile: 'Удалить файл',
   },
   messages: {
     welcomeOnBoard_title: 'Система администрирования',
@@ -94,9 +100,14 @@ export const en = {
     delete: {
       confirm: 'Вы уверены, что хотите удалить эту запись?',
     },
+    fileUploaded: 'Файл успешно загружен',
+    fileRemoved: 'Файл был удалён',
+    fileUploadError: 'Ошибка при загрузке файла',
+    fileRequired: 'Необходимо выбрать файл',
   },
   labels: {
     User: 'Пользователи',
+    vip: 'Гости и эксперты',
     Admins: 'Администраторы',
     Roles: 'Роли',
     Settings: 'Настройки',
@@ -114,6 +125,10 @@ export const en = {
     records: 'Записи',
     details: 'Детали',
     bulkDelete: 'Удалить выбранные',
+    file: 'Файл',
+    photo: 'Фото',
+    image: 'Изображение',
+    upload: 'Загрузка',
   },
   pages: {
     dashboard: 'Панель управления',
@@ -137,6 +152,11 @@ export const en = {
     status: 'Статус',
     isActive: 'Активен',
     avatar: 'Аватар',
+    photo: 'Фото',
+    file: 'Файл',
+    mimeType: 'MIME-тип',
+    filePath: 'Путь к файлу',
+    fileSize: 'Размер файла',
     content: 'Контент',
     actions: 'Действия',
     firstName: 'Имя',
@@ -150,6 +170,7 @@ export const en = {
     permissions: 'Права доступа',
     lastLogin: 'Последний вход',
     language: 'Язык',
+    uploadPhoto: 'Фото',
     timezone: 'Часовой пояс',
   },
   components: {
@@ -189,7 +210,6 @@ export const en = {
       page: 'Страница',
       of: 'из',
     },
-
     DatePicker: {
       from: 'От',
       to: 'До',
@@ -217,6 +237,13 @@ export const en = {
         title: 'Ошибка приложения',
         message: 'Что-то пошло не так. Попробуйте обновить страницу.',
       },
+    },
+    FileUpload: {
+      noFile: 'Файл не выбран',
+      chooseFile: 'Выберите файл',
+      changeFile: 'Заменить файл',
+      removeFile: 'Удалить файл',
+      preview: 'Предпросмотр',
     },
   },
 };
