@@ -1,0 +1,8 @@
+services:
+  nest-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3002:3002' # наружный:внутренний
+    restart: always
