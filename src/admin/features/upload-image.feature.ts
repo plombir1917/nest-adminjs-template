@@ -7,11 +7,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export const uploadImageFeature = uploadFeature({
+  validation: {
+    mimeTypes: ['image/png', 'image/jpeg', 'application/pdf', 'audio/mpeg'],
+  },
   componentLoader,
   provider: {
     local: {
-      bucket: join(__dirname, '../../../uploads'),
-      opts: { baseUrl: '/uploads' },
+      bucket: join(__dirname, '../../../public'),
+      opts: { baseUrl: '/public' },
     },
   }, // путь хранения файлов
   properties: {
@@ -21,6 +24,6 @@ export const uploadImageFeature = uploadFeature({
   },
   uploadPath: (record, filename) => {
     const id = record?.id?.();
-    return `vip/${id}-${filename}`;
+    return `${id}-${filename}`;
   },
 });
