@@ -55,6 +55,11 @@ export const en = {
     removeFile: 'Удалить файл',
   },
   messages: {
+    theseRecordsWillBeRemoved: 'Следующая запись будет удалена',
+    theseRecordsWillBeRemoved_plural: 'Следующие записи будут удалены',
+    pickSomeFirstToRemove: 'Чтобы удалить записи, сначала выберите их',
+    fileUploadUnsupportedType:
+      'Файл {{fileName}} имеет неподдерживаемый тип: {{mimeType}}',
     welcomeOnBoard_title: 'Система администрирования',
     welcomeOnBoard_subtitle: 'Выберите сущность для изменения в боковом меню.',
     loginWelcome_message: 'Войдите в систему для продолжения',
@@ -174,6 +179,14 @@ export const en = {
     timezone: 'Часовой пояс',
   },
   components: {
+    DropZone: {
+      placeholder: 'Перетащите файл сюда или нажмите, чтобы выбрать',
+      acceptedSize: 'Максимальный размер: {{maxSize}}',
+      acceptedType: 'Поддерживается: {{mimeTypes}}',
+      unsupportedSize: 'Файл {{fileName}} слишком большой',
+      unsupportedType:
+        'Файл {{fileName}} имеет неподдерживаемый тип: {{fileType}}',
+    },
     Login: {
       welcomeHeader: 'Добро пожаловать',
       welcomeMessage: 'Пожалуйста, войдите в свою учётную запись',
