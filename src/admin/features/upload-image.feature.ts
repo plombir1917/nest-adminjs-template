@@ -3,6 +3,10 @@ import uploadFeature from '@adminjs/upload';
 import { join } from 'path';
 
 export const uploadImageFeature = uploadFeature({
+  validation: {
+    maxSize: 1024 * 1024 * 10,
+    mimeTypes: ['image/jpeg', 'image/png', 'image/jpg'],
+  },
   componentLoader,
   provider: {
     local: {
@@ -20,3 +24,5 @@ export const uploadImageFeature = uploadFeature({
     return `${id}-${filename}`;
   },
 });
+
+componentLoader.override('UploadEditComponent', '../components/upload-edit');
