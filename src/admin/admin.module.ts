@@ -7,6 +7,7 @@ import { DashboardService } from './services/dashboard.service.js';
 import { UserModule } from '../api/user/user.module.js';
 import { componentLoader } from './components/components.config.js';
 import { AuthModule } from '../api/auth/auth.module.js';
+import { ResourceService } from './services/resource.service.js';
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -46,7 +47,7 @@ AdminJS.registerAdapter({ Database, Resource });
       }),
     ),
   ],
-  providers: [AdminJSService, DashboardService],
+  providers: [AdminJSService, DashboardService, ResourceService],
   exports: [AdminJSService],
 })
 export class AdminJSModule {}
