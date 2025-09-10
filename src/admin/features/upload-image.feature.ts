@@ -10,18 +10,13 @@ export const uploadImageFeature = uploadFeature({
   componentLoader,
   provider: {
     local: {
-      bucket: join(process.cwd(), 'public'),
-      opts: { baseUrl: '/public' },
+      bucket: join(process.cwd(), 'public/image'),
+      opts: { baseUrl: '/public/image' },
     },
   }, // путь хранения файлов
   properties: {
     key: 'photo',
-    file: 'uploadPhoto', // временное поле для формы
     mimeType: 'mimeType', // опционально
-  },
-  uploadPath: (record, filename) => {
-    const id = record?.id?.();
-    return `${id}-${filename}`;
   },
 });
 
