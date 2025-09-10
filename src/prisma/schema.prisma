@@ -28,3 +28,8 @@ model vip {
   description String
   photo String?
 }
+
+model Gallery {
+  id Int @id @default(autoincrement())
+  photo String?
+}
