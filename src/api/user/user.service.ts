@@ -47,8 +47,10 @@ export class UserService {
 
   async update(id: number, updateUserDto: UpdateUserDto) {
     try {
+      const user = await this.findOne(id);
       if (updateUserDto.password)
-        updateUserDto.password = await encodePassword(updateUserDto.password);
+        if (updateUserDto.password && user.password !== updateUserDto.password)
+          updateUserDto.password = await encodePassword(updateUserDto.password);
 
       return await this.userRepository.update(id, updateUserDto);
     } catch (error) {
