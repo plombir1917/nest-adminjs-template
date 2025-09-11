@@ -13,8 +13,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @default(autoincrement()) @id
+model user {
+  id String @id @default(uuid())
   email String  @unique
   name  String?
   password String
@@ -23,45 +23,49 @@ model User {
 }
 
 model vip {
-  id Int @default(autoincrement()) @id
+  id String @id @default(uuid())
   name String
   description String
   photo String?
 }
 
-model Gallery {
-  id Int @id @default(autoincrement())
+model gallery {
+  id String @id @default(uuid())
   photo String?
 }
 
-model Map {
-  id Int @id @default(autoincrement())
+model map {
+  id String @id @default(uuid())
   photo String?
 }
 
-model Emotions {
-  id Int @id @default(autoincrement())
+model emotions {
+  id String @id @default(uuid())
   text String
   name String
   description String
   photo String?
 }
 
-model Emotions_photo {
-  id Int @id @default(autoincrement())
+model emotions_photo {
+  id String @id @default(uuid())
   photo String?
 }
 
-model Statistics {
-  id Int @id @default(autoincrement())
+model statistics {
+  id String @id @default(uuid())
   number Int
   description String
 }
 
-// model Main {
-//   id Int @id @default(autoincrement())
-//   photo String?
-//   decription String
-//   about String
-//   slider String[]
-// }
+model main {
+  id String @id @default(uuid())
+  photo String?
+  description String
+  about String
+}
+
+model main_photo {
+  id String @id @default(uuid())
+  photo String?
+}

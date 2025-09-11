@@ -2,11 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module.js';
 import { ValidationPipe } from '@nestjs/common';
 import * as express from 'express';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { join } from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,7 +11,7 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
-  app.use('/public', express.static(join(__dirname, '..', 'public')));
+  app.use('/public', express.static(join(process.cwd(), 'public')));
   await app.listen(3002);
 }
 bootstrap();

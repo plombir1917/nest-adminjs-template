@@ -15,7 +15,7 @@ export class UserRepository implements IRepository {
     });
   }
 
-  async findOne(id: number): Promise<UserEntity> {
+  async findOne(id: string): Promise<UserEntity> {
     return await this.prismaService.user.findUniqueOrThrow({
       where: {
         id,
@@ -31,14 +31,14 @@ export class UserRepository implements IRepository {
     return await this.prismaService.user.findMany();
   }
 
-  async update(id: number, user: UpdateUserDto) {
+  async update(id: string, user: UpdateUserDto) {
     return await this.prismaService.user.update({
       where: { id },
       data: user,
     });
   }
 
-  async delete(id: number): Promise<UserEntity> {
+  async delete(id: string): Promise<UserEntity> {
     return await this.prismaService.user.delete({
       where: { id },
     });

@@ -1,6 +1,6 @@
 import { ResourceOptions } from 'adminjs';
 
-export const galleryResourceOptions: ResourceOptions = {
+export const GalleryResourceOptions: ResourceOptions = {
   properties: {
     uploadPhoto: {
       isVisible: true,

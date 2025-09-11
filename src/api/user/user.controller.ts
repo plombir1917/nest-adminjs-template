@@ -41,7 +41,7 @@ export class UserController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     try {
-      return this.userService.findOne(+id);
+      return this.userService.findOne(id);
     } catch (error) {
       throw new NotFoundException(error.message);
     }
@@ -50,7 +50,7 @@ export class UserController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     try {
-      return this.userService.update(+id, updateUserDto);
+      return this.userService.update(id, updateUserDto);
     } catch (error) {
       throw new BadRequestException(error.message);
     }
@@ -59,7 +59,7 @@ export class UserController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     try {
-      return this.userService.delete(+id);
+      return this.userService.delete(id);
     } catch (error) {
       throw new BadRequestException(error.message);
     }

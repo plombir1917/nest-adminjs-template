@@ -111,9 +111,11 @@ export const en = {
     fileRequired: 'Необходимо выбрать файл',
   },
   labels: {
+    Main: 'Главная',
+    Main_photo: 'Изображения в блоке "Главная"',
     Emotions: 'Эмоции',
     Statistics: 'Статистика',
-    Emotions_photo: 'Эмоции фото',
+    Emotions_photo: 'Изображения в блоке "Эмоции"',
     Map: 'Карта',
     Gallery: 'Галерея',
     User: 'Пользователи',
@@ -152,6 +154,7 @@ export const en = {
   properties: {
     id: 'ID',
     name: 'Имя',
+    about: 'О форуме',
     number: 'Число',
     text: 'Текст',
     title: 'Заголовок',

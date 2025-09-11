@@ -29,7 +29,7 @@ export class UserService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     try {
       return await this.userRepository.findOne(id);
     } catch (error) {
@@ -45,7 +45,7 @@ export class UserService {
     }
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto) {
     try {
       const user = await this.findOne(id);
       if (updateUserDto.password)
@@ -58,7 +58,7 @@ export class UserService {
     }
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     try {
       return await this.userRepository.delete(id);
     } catch (error) {
