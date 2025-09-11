@@ -1,6 +1,6 @@
 import { ResourceOptions } from 'adminjs';
 
-export const vipResourceOptions: ResourceOptions = {
+export const mapResourceOptions: ResourceOptions = {
   properties: {
     uploadPhoto: {
       isVisible: true,

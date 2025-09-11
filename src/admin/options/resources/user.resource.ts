@@ -5,10 +5,11 @@ import {
   newAction,
   showAction,
 } from '../../../admin/actions.js';
+import { ResourceOptions } from 'adminjs';
 
 const resource = 'user';
 
-export const UserResourceOptions = {
+export const UserResourceOptions: ResourceOptions = {
   listProperties: Object.keys(UserEntity),
   navigation: { icon: 'User' },
   actions: {

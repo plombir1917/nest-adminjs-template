@@ -33,3 +33,35 @@ model Gallery {
   id Int @id @default(autoincrement())
   photo String?
 }
+
+model Map {
+  id Int @id @default(autoincrement())
+  photo String?
+}
+
+model Emotions {
+  id Int @id @default(autoincrement())
+  text String
+  name String
+  description String
+  photo String?
+}
+
+model Emotions_photo {
+  id Int @id @default(autoincrement())
+  photo String?
+}
+
+model Statistics {
+  id Int @id @default(autoincrement())
+  number Int
+  description String
+}
+
+// model Main {
+//   id Int @id @default(autoincrement())
+//   photo String?
+//   decription String
+//   about String
+//   slider String[]
+// }

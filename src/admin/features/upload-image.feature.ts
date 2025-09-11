@@ -16,7 +16,7 @@ export const uploadImageFeature = uploadFeature({
   }, // путь хранения файлов
   properties: {
     key: 'photo',
-    mimeType: 'mimeType', // опционально
+    file: 'uploadPhoto',
   },
 });
 

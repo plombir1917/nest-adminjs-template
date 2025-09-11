@@ -1,7 +1,12 @@
-export const galleryResourceOptions = {
+import { ResourceOptions } from 'adminjs';
+
+export const galleryResourceOptions: ResourceOptions = {
   properties: {
-    photo: {
+    uploadPhoto: {
       isVisible: true,
+    },
+    photo: {
+      isVisible: false,
     },
   },
 };

@@ -1,6 +1,6 @@
 import { ResourceOptions } from 'adminjs';
 
-export const vipResourceOptions: ResourceOptions = {
+export const emotionsPhotoResourceOptions: ResourceOptions = {
   properties: {
     uploadPhoto: {
       isVisible: true,
