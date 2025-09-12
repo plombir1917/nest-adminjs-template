@@ -188,6 +188,7 @@ export const en = {
     language: 'Язык',
     uploadPhoto: 'Фото',
     timezone: 'Часовой пояс',
+    emotions: 'Эмоции',
   },
   components: {
     DropZone: {
