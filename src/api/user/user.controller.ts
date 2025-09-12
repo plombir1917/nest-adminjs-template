@@ -14,7 +14,9 @@ import { UserService } from './user.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
 import { AdminGuard } from '../auth/guards/admin.guard.js';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @UseGuards(AdminGuard)
 @Controller('user')
 export class UserController {
