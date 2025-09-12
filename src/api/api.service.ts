@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service.js';
+import {
+  setFullFilePathForPhotoField,
+  setFullFilePathForPhotoFieldInArray,
+} from '../utils/file-path.js';
 
 @Injectable()
 export class ApiService {
@@ -14,10 +18,8 @@ export class ApiService {
       },
     });
 
-    main.main_photos = main.main_photos.map((item) => {
-      item.photo = process.env.BASE_PHOTO_URL + item.photo;
-      return item;
-    });
+    main.photo = setFullFilePathForPhotoField(main.photo);
+    main.main_photos = setFullFilePathForPhotoFieldInArray(main.main_photos);
 
     return main;
   }
@@ -34,24 +36,28 @@ export class ApiService {
         },
       },
     });
-
-    emotions.emotions_photos = emotions.emotions_photos.map((item) => {
-      item.photo = process.env.BASE_PHOTO_URL + item.photo;
-      return item;
-    });
+    emotions.photo = setFullFilePathForPhotoField(emotions.photo);
+    emotions.emotions_photos = setFullFilePathForPhotoFieldInArray(
+      emotions.emotions_photos,
+    );
 
     return emotions;
   }
 
   async getVip() {
-    return await this.prismaService.vip.findMany();
+    const vip = await this.prismaService.vip.findMany();
+
+    return setFullFilePathForPhotoFieldInArray(vip);
   }
 
   async getMap() {
-    return await this.prismaService.map.findFirst();
+    const map = await this.prismaService.map.findFirst();
+    map.photo = setFullFilePathForPhotoField(map.photo);
+    return map;
   }
 
   async getGallery() {
-    return await this.prismaService.gallery.findMany();
+    const gallery = await this.prismaService.gallery.findMany();
+    return setFullFilePathForPhotoFieldInArray(gallery);
   }
 }
