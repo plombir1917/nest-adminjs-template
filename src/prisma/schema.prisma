@@ -45,11 +45,14 @@ model emotions {
   name String
   description String
   photo String?
+  emotions_photos emotions_photo[]
 }
 
 model emotions_photo {
   id String @id @default(uuid())
   photo String?
+  emotioins_id String
+  emotions emotions @relation(fields: [emotioins_id], references: [id])
 }
 
 model statistics {
@@ -63,9 +66,12 @@ model main {
   photo String?
   description String
   about String
+  main_photos main_photo[]
 }
 
 model main_photo {
   id String @id @default(uuid())
   photo String?
+  main_id String
+  main main @relation(fields: [main_id], references: [id])
 }
