@@ -154,6 +154,7 @@ export const en = {
   properties: {
     id: 'ID',
     name: 'Имя',
+    main: 'Главная',
     about: 'О форуме',
     number: 'Число',
     text: 'Текст',
