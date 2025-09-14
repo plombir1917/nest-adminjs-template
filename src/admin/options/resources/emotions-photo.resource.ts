@@ -2,7 +2,7 @@ import { ResourceOptions } from 'adminjs';
 
 export const EmotionsPhotoResourceOptions: ResourceOptions = {
   navigation: {
-    name: 'Фото',
+    name: 'Страница форума',
   },
   properties: {
     uploadPhoto: {

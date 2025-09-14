@@ -1,14 +1,14 @@
 import { ResourceOptions } from 'adminjs';
 
-export const MapResourceOptions: ResourceOptions = {
+export const RoutineResourceOptions: ResourceOptions = {
   navigation: {
     name: 'Страница форума',
   },
   properties: {
-    uploadPhoto: {
+    uploadFile: {
       isVisible: true,
     },
-    photo: {
+    file: {
       isVisible: false,
     },
   },

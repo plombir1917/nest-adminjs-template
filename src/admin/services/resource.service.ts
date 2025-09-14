@@ -12,6 +12,8 @@ import { EmotionsResourceOptions } from '../options/resources/emotions.resource.
 import { StatisticsResourceOptions } from '../options/resources/statistics.resource.js';
 import { MainResourceOptions } from '../options/resources/main.resource.js';
 import { MainPhotoResourceOptions } from '../options/resources/main-photo.resource.js';
+import { RoutineResourceOptions } from '../options/resources/routine.resource.js';
+import { uploadFilesFeature } from '../features/upload-file.feature.js';
 
 @Injectable()
 export class ResourceService {
@@ -21,12 +23,13 @@ export class ResourceService {
     const resources = [];
     resources.push(this.getUserResource());
     resources.push(this.getMainResource());
+    resources.push(this.getMainPhotoResource());
     resources.push(this.getStatisticsResource());
     resources.push(this.getEmotionsResource());
-    resources.push(this.getVipResource());
-    resources.push(this.getMainPhotoResource());
-    resources.push(this.getMapResource());
     resources.push(this.getEmotionsPhotoResource());
+    resources.push(this.getRoutineResource());
+    resources.push(this.getVipResource());
+    resources.push(this.getMapResource());
     resources.push(this.getGalleryResource());
 
     return resources;
@@ -95,6 +98,17 @@ export class ResourceService {
       },
       options: EmotionsPhotoResourceOptions,
       features: [uploadImageFeature],
+    };
+  }
+
+  private getRoutineResource(): ResourceWithOptions {
+    return {
+      resource: {
+        model: getModelByName('routine'),
+        client: this.prismaService,
+      },
+      options: RoutineResourceOptions,
+      features: [uploadFilesFeature],
     };
   }
 

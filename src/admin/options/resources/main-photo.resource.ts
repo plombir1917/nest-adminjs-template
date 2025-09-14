@@ -2,7 +2,7 @@ import { ResourceOptions } from 'adminjs';
 
 export const MainPhotoResourceOptions: ResourceOptions = {
   navigation: {
-    name: 'Фото',
+    name: 'Страница форума',
   },
   properties: {
     uploadPhoto: {
