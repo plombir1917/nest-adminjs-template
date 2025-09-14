@@ -3,24 +3,6 @@ import { emotions, gallery, main, map, statistics, vip } from '@prisma/client';
 
 export class PageDataEntity {
   @ApiProperty({
-    example: {
-      id: '18ce6847-804f-4ad9-af2a-4520b6d0bde0',
-      photo:
-        '18ce6847-804f-4ad9-af2a-4520b6d0bde0/7rxzEFonTIaCEGaA0TRlBYmUVQ8K9dyoTvs1F59GZA56tCP2LHK61QPhGlH712xy8eV8TmJdZ7klAtJUKTjRDmvR.jpg',
-      description: 'Главная, описание ',
-      about: 'О форуме',
-      main_photos: [
-        {
-          photo:
-            'http://localhost:3002/public/image/d79a1768-481a-472d-a845-43498d889ca9/7rxzEFonTIaCEGaA0TRlBYmUVQ8K9dyoTvs1F59GZA56tCP2LHK61QPhGlH712xy8eV8TmJdZ7klAtJUKTjRDmvR.jpg',
-        },
-      ],
-    },
-    description: 'Главная',
-  })
-  main: main;
-
-  @ApiProperty({
     example: [
       {
         id: '9cf9da91-733f-49e3-9737-016285eeb623',

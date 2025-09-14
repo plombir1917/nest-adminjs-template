@@ -5,6 +5,13 @@ export function setFullFilePathForPhotoFieldInArray(array: any[]) {
   });
 }
 
+export function setFullFilePathForFileFieldInArray(array: any[]) {
+  return array.map((item) => {
+    item.file = process.env.BASE_PHOTO_URL + item.file;
+    return item;
+  });
+}
+
 export function setFullFilePathForPhotoField(photo: string) {
   return process.env.BASE_PHOTO_URL + photo;
 }
