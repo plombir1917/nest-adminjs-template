@@ -20,4 +20,4 @@ export const uploadImageFeature = uploadFeature({
   },
 });
 
-componentLoader.override('UploadEditComponent', '../components/upload-edit');
+// componentLoader.override('UploadEditComponent', '../components/upload-edit');
