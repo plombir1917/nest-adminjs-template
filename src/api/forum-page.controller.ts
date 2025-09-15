@@ -86,7 +86,7 @@ export class ForumPageController {
   @ApiResponse({
     status: 200,
     description: 'Успешно',
-    type: [MapEntity],
+    type: MapEntity,
   })
   async getMap() {
     return await this.apiService.getMap();
